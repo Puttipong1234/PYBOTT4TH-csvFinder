@@ -151,6 +151,23 @@ def handle_message(event):
     # CSV = csvFinder(csvPath=os.path.join(csv_storage_path,csv_files[0]))
     # res = CSV.find_row(val=text_from_user,limit=3)
 
+@handler.add(FollowEvent)
+def Greeting(event):
+    reply_token = event.reply_token #รีพลายโทเคน
+    userid = event.source.user_id #ยูซเซอไอดี
+
+
+    action1 = MessageAction(label="ค้นหาแบบแถว",text="ค้นหาแบบแถว")
+    action2 = MessageAction(label="ค้นหาแบบคอลัมน์",text="ค้นหาแบบคอลัมน์")
+
+    qbtn1 = QuickReplyButton(action=action1)
+    qbtn2 = QuickReplyButton(action=action2)
+
+    qreply = QuickReply(items=[qbtn1,qbtn2])
+
+    text = TextSendMessage(text = "สวัสดีครับ ยินดีต้อนรับสู่บริการของเรา",quick_reply=qreply)
+
+    line_bot_api.reply_message(reply_token,messages=text) #reply messageกลับไป
     
 
 

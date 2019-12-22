@@ -140,7 +140,7 @@ def flex_find_row(แถวที่พบ,คำที่ค้นหา,คะ
                 "type": "image",
                 "url": "https://cdn-images.prod.thinkofliving.com/wp-content/uploads/1/2019/04/24112413/05-NEO-HOME_Italian-Style.jpg",
                 "position": "relative",
-                "size": "sm",
+                "size": "xs",
                 "aspectMode": "cover"
             }
             ],
@@ -148,8 +148,8 @@ def flex_find_row(แถวที่พบ,คำที่ค้นหา,คะ
             "cornerRadius": "50px",
             "borderWidth": "2px",
             "borderColor": "#000000",
-            "offsetEnd": "20px",
-            "offsetTop": "20px"
+            "offsetEnd": "10px",
+            "offsetTop": "10px"
         }
         ]
     },
