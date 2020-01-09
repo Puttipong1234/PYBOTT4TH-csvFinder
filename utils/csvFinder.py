@@ -168,8 +168,8 @@ class csvFinder():
         if fuzz.ratio(val,val_to_match) >= score :
             res = [True , "fuzz_ratio" ,fuzz.ratio(val,val_to_match)]
             return res
-        elif fuzz.partial_ratio(val,val_to_match) >= score :
-            res = [True , "fuzz_partial_ratio" ,fuzz.partial_ratio(val,val_to_match)-70]
+        elif fuzz.partial_ratio(val,val_to_match)-50 >= score and len(val) >= 7 :
+            res = [True , "fuzz_partial_ratio" ,fuzz.partial_ratio(val,val_to_match)]
             return res
         # elif fuzz.token_sort_ratio(val,val_to_match) >= 90 :
         #     res = [True , "fuzz_token_sort_ratio" ,fuzz.token_sort_ratio(val,val_to_match)]
