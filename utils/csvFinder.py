@@ -2,6 +2,7 @@ import csv
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 import operator
+import re
 
 
 class csvFinder():
@@ -13,12 +14,16 @@ class csvFinder():
     def set_blank_char(self,char):
         #กรณีต้องการเปลี่ยน "ไม่ระบุ"
         self.blank = char
+    
+    def clean_text(text):
+        text = re.sub('[^\w.]', '', text)
+        text = text.strip().lower()
+        return text
         
-    
-    
     def find_row(self,val,limit=3):
         
-        
+        val = self.clean_text(val)
+
         found_data = []
         num_found = 0
         
@@ -32,8 +37,10 @@ class csvFinder():
                 #     break
                 
                 for key,value in each_dict.items():
+
+                    value = self.clean_text(value)
                     
-                    if val.strip() == value.strip():
+                    if val == value:
                         print("found data at key:" + str(key) )
                         print("found data at row:" + str(num+2) )
                         data = {"row" : num , "true_row" : num+2 , "col_name" : key , "search_type" : "pure" , "score" :1000 }
@@ -43,7 +50,7 @@ class csvFinder():
                     
                     else :
 
-                        match = self.match_value(val.strip(),value.strip(),score=default_scoring)
+                        match = self.match_value(val,value,score=default_scoring)
                         if match :
                             print("found data at key:" + str(key) )
                             print("found data at row:" + str(num+2) )
@@ -61,14 +68,14 @@ class csvFinder():
                     clean_data = {}
 
                     for key,val in self.csvdata[index].items():
-                        if val.strip() == "":
+                        if val == "":
                             continue
                         
-                        elif val.strip() == self.blank:
+                        elif val == self.blank:
                             clean_data[key] = "ไม่ได้ระบุไว้"
 
                         else :
-                            clean_data[key] = val.strip()
+                            clean_data[key] = val
 
                     i["result"] = clean_data
 
@@ -81,6 +88,8 @@ class csvFinder():
     
     
     def find_value(self,val,col_to_find,limit=3):
+
+        val = self.clean_text(val)
         
         cols = [i for i in self.csvdata[0].keys()]  
         score = process.extractOne(col_to_find,cols)
@@ -99,8 +108,10 @@ class csvFinder():
                     break
                 
                 for key,value in each_dict.items():
-                    
-                    if val.strip() == value.strip():
+
+                    value = self.clean_text(value)
+
+                    if val == value:
                         print("found data at key:" + str(key) )
                         print("found data at row:" + str(num+2) )
                         data = {"row" : num , "true_row" : num+2 , "col_name" : key , "col_to_find" : col_to_find , "search_type" : "pure" , "score" :1000 }
@@ -108,15 +119,15 @@ class csvFinder():
                         num_found += 1
                         break
                     
-                    elif val.strip() in value.strip() and len(val.strip()) >= 5:
+                    elif val in value and len(val) >= 5:
                         print("found data at key:" + str(key) )
                         print("found data at row:" + str(num+2) )
                         data = {"row" : num , "true_row" : num+2 , "col_name" : key , "col_to_find" : col_to_find , "search_type" : "partial" , "score" :120 }
                         found_data.append(data)
                     
-                    elif len(val.strip()) >= 5:
+                    elif len(val) >= 5:
 
-                        match = self.match_value(val.strip(),value.strip(),score=default_scoring)
+                        match = self.match_value(val,value,score=default_scoring)
                         if match :
                             print("found data at key:" + str(key) )
                             print("found data at row:" + str(num+2) )

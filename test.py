@@ -1,3 +1,4 @@
-List = [1,2,3,4]
-
-print(len(List))
+import re
+string = "↵                        ไทยๆtryit1.tar↵ ####///๑๑                       "
+text = re.sub('[^\w.]', '', string)
+print(type(text)) 
