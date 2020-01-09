@@ -15,7 +15,7 @@ class csvFinder():
         #กรณีต้องการเปลี่ยน "ไม่ระบุ"
         self.blank = char
     
-    def clean_text(text):
+    def clean_text(self,text):
         text = re.sub('[^\w.]', '', text)
         text = text.strip().lower()
         return text
