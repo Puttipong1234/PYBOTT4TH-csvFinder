@@ -89,6 +89,7 @@ def handle_message(event):
         db[userid]["value"] = text_from_user  #เก็บข้อมูล
 
         CSV = csvFinder(csvPath="./CSVs/รายการบ้านสองชั้น.csv")
+        CSV.set_finding_column("รายการ")
         CSV.add_stop_word("จำนวน","ปริมาณ","ราคา","หน่วย","อยากทราบ","หน่อย","ถาม")
         search_result = CSV.find_row(val=text_from_user,limit=10) ##search result => list[dict]
 
@@ -138,6 +139,7 @@ def handle_message(event):
         col_to_find = response[0] ## dialogflow บอกว่า user ต้องการค้นหา column ไหน
 
         CSV = csvFinder(csvPath="./CSVs/รายการบ้านสองชั้น.csv")
+        CSV.set_finding_column("รายการ")
         CSV.add_stop_word("จำนวน","ปริมาณ","ราคา","หน่วย","อยากทราบ","หน่อย","ถาม")
         search_result = CSV.find_value(val=text_from_user,col_to_find=col_to_find,limit=10) #ค้นหา
 

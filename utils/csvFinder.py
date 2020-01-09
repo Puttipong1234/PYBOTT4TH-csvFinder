@@ -11,10 +11,15 @@ class csvFinder():
         self.csvdata = self.read_data()
         self.blank = "-"
         self.stopword = []
+        self.find_column = []
     
     def set_blank_char(self,char):
         #กรณีต้องการเปลี่ยน "ไม่ระบุ"
         self.blank = char
+    
+    def set_finding_column(self,*args):
+        for x in args:
+            self.find_column.append(x)
     
     def add_stop_word(self,*args):
         #คำที่ไม่มีความหมาย (ขึ้นอยู่กับ spread sheet ของแต่ละคน)
@@ -47,6 +52,9 @@ class csvFinder():
                 #     break
                 
                 for key,value in each_dict.items():
+
+                    if key in self.find_column:
+                        continue
 
                     value = self.clean_text(value)
                     print(value)
@@ -119,6 +127,9 @@ class csvFinder():
                     break
                 
                 for key,value in each_dict.items():
+
+                    if key in self.find_column:
+                        continue
 
                     value = self.clean_text(value)
 
