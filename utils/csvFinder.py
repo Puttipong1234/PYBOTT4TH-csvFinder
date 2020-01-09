@@ -108,6 +108,12 @@ class csvFinder():
                         num_found += 1
                         break
                     
+                    elif val.strip() in value.strip() and len(val.strip()) >= 5:
+                        print("found data at key:" + str(key) )
+                        print("found data at row:" + str(num+2) )
+                        data = {"row" : num , "true_row" : num+2 , "col_name" : key , "col_to_find" : col_to_find , "search_type" : "partial" , "score" :120 }
+                        found_data.append(data)
+                    
                     else :
 
                         match = self.match_value(val.strip(),value.strip(),score=default_scoring)
@@ -132,7 +138,7 @@ class csvFinder():
                 return found_data[0:limit]
 
             else :
-                default_scoring -= 7
+                default_scoring -= 5
                 continue
     
     
@@ -151,9 +157,9 @@ class csvFinder():
         if fuzz.ratio(val,val_to_match) >= score :
             res = [True , "fuzz_ratio" ,fuzz.ratio(val,val_to_match)]
             return res
-        # elif fuzz.partial_ratio(val,val_to_match) >= score :
-        #     res = [True , "fuzz_partial_ratio" ,fuzz.partial_ratio(val,val_to_match)]
-        #     return res
+        elif fuzz.partial_ratio(val,val_to_match) >= score :
+            res = [True , "fuzz_partial_ratio" ,fuzz.partial_ratio(val,val_to_match)-70]
+            return res
         # elif fuzz.token_sort_ratio(val,val_to_match) >= 90 :
         #     res = [True , "fuzz_token_sort_ratio" ,fuzz.token_sort_ratio(val,val_to_match)]
         #     return res
