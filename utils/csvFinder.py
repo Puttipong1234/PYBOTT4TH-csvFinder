@@ -44,7 +44,7 @@ class csvFinder():
         
         default_scoring = 95
 
-        while not found_data or default_scoring >= 50 or default_scoring >= 50 :
+        while not found_data or default_scoring >= 50:
             num = 0
             for each_dict in self.csvdata:
                 
@@ -67,7 +67,13 @@ class csvFinder():
                         num_found += 1
                         # break
                     
-                    else :
+                    elif val in value and len(val) >= 5:
+                        print("found data at key:" + str(key) )
+                        print("found data at row:" + str(num+2) )
+                        data = {"row" : num , "true_row" : num+2 , "col_name" : key , "search_type" : "partial" , "score" :120 }
+                        found_data.append(data)
+                    
+                    elif len(val) >= 5:
 
                         match = self.match_value(val,value,score=default_scoring)
                         if match :
@@ -75,7 +81,6 @@ class csvFinder():
                             print("found data at row:" + str(num+2) )
                             data = {"row" : num , "true_row" : num+2 , "col_name" : key , "search_type" : match[1] , "score" :match[2] }
                             found_data.append(data)
-                            # num_found += 1
                         
                 num += 1
 
@@ -139,7 +144,6 @@ class csvFinder():
                         data = {"row" : num , "true_row" : num+2 , "col_name" : key , "col_to_find" : col_to_find , "search_type" : "pure" , "score" :1000 }
                         found_data.append(data)
                         num_found += 1
-                        break
                     
                     elif val in value and len(val) >= 5:
                         print("found data at key:" + str(key) )
