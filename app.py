@@ -146,7 +146,7 @@ def handle_message(event):
         results = [i["result"] for i in search_result]
 
         flex = flex_find_value(คำที่ค้นหา=text_from_user,results=results)
-        print(flex)
+        # print(flex)
         flex_to_reply = SetMessage_Object(flex)
         reply_msg(reply_token,data=flex_to_reply,bot_access_key=channel_access_token)
 
