@@ -10,14 +10,24 @@ class csvFinder():
         self.csvPath = csvPath 
         self.csvdata = self.read_data()
         self.blank = "-"
+        self.stopword = []
     
     def set_blank_char(self,char):
         #กรณีต้องการเปลี่ยน "ไม่ระบุ"
         self.blank = char
     
+    def add_stop_word(self,*args):
+        #คำที่ไม่มีความหมาย (ขึ้นอยู่กับ spread sheet ของแต่ละคน)
+        for x in args:
+            self.stopword.append(x)
+    
     def clean_text(self,text):
         text = re.sub('[^\w.]', '', text)
         text = text.strip().lower()
+
+        for word in self.stopword:
+            text = text.replace(word,"")
+
         return text
         
     def find_row(self,val,limit=3):
