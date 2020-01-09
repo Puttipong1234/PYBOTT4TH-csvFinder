@@ -53,7 +53,7 @@ class csvFinder():
                 
                 for key,value in each_dict.items():
 
-                    if key in self.find_column:
+                    if key not in self.find_column:
                         continue
 
                     value = self.clean_text(value)
@@ -128,7 +128,7 @@ class csvFinder():
                 
                 for key,value in each_dict.items():
 
-                    if key in self.find_column:
+                    if key not in self.find_column:
                         continue
 
                     value = self.clean_text(value)
