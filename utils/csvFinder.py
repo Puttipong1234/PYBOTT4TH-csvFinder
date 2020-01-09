@@ -114,7 +114,7 @@ class csvFinder():
                         data = {"row" : num , "true_row" : num+2 , "col_name" : key , "col_to_find" : col_to_find , "search_type" : "partial" , "score" :120 }
                         found_data.append(data)
                     
-                    else :
+                    elif len(val.strip()) >= 5:
 
                         match = self.match_value(val.strip(),value.strip(),score=default_scoring)
                         if match :

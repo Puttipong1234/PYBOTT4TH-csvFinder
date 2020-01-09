@@ -62,14 +62,14 @@ def flex_find_row(แถวที่พบ,คำที่ค้นหา,คะ
             "type": "text",
             "text": "| ตำแหน่งที่พบ : แถวที่ {}".format(แถวที่พบ),
             "weight": "bold",
-            "size": "lg",
+            "size": "md",
             "margin": "xs"
         },
         {
             "type": "text",
             "text": "คำที่ค้นหา : {}".format(คำที่ค้นหา),
             "size": "xs",
-            "color": "#aaaaaa",
+            "color": "#4f98ca",
             "wrap": True,
             "align": "start",
             "margin": "md"
@@ -78,7 +78,7 @@ def flex_find_row(แถวที่พบ,คำที่ค้นหา,คะ
             "type": "text",
             "text": "คะแนนความเที่ยงตรง : {}".format(คะแนนความเที่ยงตรง),
             "size": "xs",
-            "color": "#aaaaaa",
+            "color": "#4f98ca",
             "wrap": True,
             "align": "start",
             "margin": "none"
@@ -86,7 +86,7 @@ def flex_find_row(แถวที่พบ,คำที่ค้นหา,คะ
         {
             "type": "text",
             "size": "xs",
-            "color": "#aaaaaa",
+            "color": "#4f98ca",
             "wrap": True,
             "align": "start",
             "text": "คอลัมน์ที่ค้นพบคำนี้ : {}".format(คอลัมน์ที่ค้นพบคำนี้)
@@ -102,10 +102,10 @@ def flex_find_row(แถวที่พบ,คำที่ค้นหา,คะ
             "spacing": "sm",
             "contents": all_boxes
         },
-        {
-            "type": "separator",
-            "margin": "xxl"
-        },
+        # {
+        #     "type": "separator",
+        #     "margin": "xxl"
+        # },
         {
             "type": "box",
             "layout": "horizontal",
@@ -114,7 +114,7 @@ def flex_find_row(แถวที่พบ,คำที่ค้นหา,คะ
             {
                 "type": "text",
                 "text": "ลิงค์ Google Sheet",
-                "size": "xs",
+                "size": "sm",
                 "color": "#aaaaaa",
                 "flex": 0
             },
@@ -122,7 +122,7 @@ def flex_find_row(แถวที่พบ,คำที่ค้นหา,คะ
                 "type": "text",
                 "text": "คลิก",
                 "color": "#1DB446",
-                "size": "xs",
+                "size": "sm",
                 "align": "end",
                 "action": {
                 "type": "uri",
@@ -148,8 +148,8 @@ def flex_find_row(แถวที่พบ,คำที่ค้นหา,คะ
             "cornerRadius": "50px",
             "borderWidth": "2px",
             "borderColor": "#000000",
-            "offsetEnd": "10px",
-            "offsetTop": "10px"
+            "offsetEnd": "5px",
+            "offsetTop": "5px"
         }
         ]
     },
