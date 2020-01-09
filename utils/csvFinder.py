@@ -49,6 +49,7 @@ class csvFinder():
                 for key,value in each_dict.items():
 
                     value = self.clean_text(value)
+                    print(value)
                     
                     if val == value:
                         print("found data at key:" + str(key) )
