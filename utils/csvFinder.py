@@ -35,7 +35,7 @@ class csvFinder():
 
         return text
         
-    def find_row(self,val,limit=3):
+    def find_row(self,val,limit=9):
         
         val = self.clean_text(val)
 
@@ -44,7 +44,7 @@ class csvFinder():
         
         default_scoring = 95
 
-        while not found_data:
+        while not found_data or default_scoring >= 50 or default_scoring >= 50 :
             num = 0
             for each_dict in self.csvdata:
                 
@@ -106,7 +106,7 @@ class csvFinder():
                 continue
     
     
-    def find_value(self,val,col_to_find,limit=3):
+    def find_value(self,val,col_to_find,limit=9):
 
         val = self.clean_text(val)
         
@@ -119,7 +119,7 @@ class csvFinder():
         
         default_scoring = 95
 
-        while not found_data:
+        while not found_data or default_scoring >= 50:
             num = 0
             for each_dict in self.csvdata:
                 
