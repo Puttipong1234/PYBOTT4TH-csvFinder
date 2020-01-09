@@ -124,7 +124,7 @@ class csvFinder():
         
         default_scoring = 95
 
-        while not found_data or default_scoring >= 50:
+        while not found_data or default_scoring >= 35:
             num = 0
             for each_dict in self.csvdata:
                 
